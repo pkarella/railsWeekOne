@@ -3,25 +3,44 @@
   <head>
     <title>RailsWeekOne</title>
     <%= csrf_meta_tags %>
-
+    <link href="assets/stylesheets/nav.css" rel="stylesheets">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <div class="jumbotron">
+  <div class="nav-outer">
+      <div class="nav-wrap">
+        <nav class="navigation">
+          <!-- <div class="logo"><img src="img/logo.png"></div> -->
+          <div class="nav" nav-menu-style="yoga">
+            <ul class="nav-menu">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+            </ul>
+          </div>
+        </nav>
+          </div>
+        </div>
+  <div class="container">
+    <br>
+    <br>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2> Products</h2>
+        </div>
+      <div class="panel-body">
+        <%= flash[:alert] %>
+        <%= flash[:notice] %>
 
+          <%= yield %>
+      </div>
     </div>
-    <% content_for(:navbar) do %>
-    <li><a href="/">Home</a></li>
-    <li><a href="something/else">Something else</a></li>
-    <li><a href="etc">Etc.</a></li>
-    <% end %>
 
-  <%= yield(:navbar)%>
-  <%= flash[:alert] %>
-  <%= flash[:notice] %>
 
-    <%= yield %>
+
+
+
+  </div>
   </body>
 </html>

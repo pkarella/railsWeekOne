@@ -4,5 +4,13 @@ class Product < ActiveRecord::Base
   validates :cost, :presence => true
   validates :country, :presence => true
 
-  scope :today, -> { where("created_at >=?", Time.now.beginning_of_day)}
+  scope :most_reviews, -> {(
+   select("products.id, products.name, products.cost,products.country count(reviews.id) as reviews_count")
+   .joins(:reviews)
+   .group("products.id")
+   .order("reviews_count DESC")
+   .limit(10)
+   )}
+
+  scope :search, -> (name_parameter) { where("name like ?", "%#{name_parameter}%")}
 end
