@@ -9,6 +9,19 @@
   </head>
 
   <body>
+    <div class="jumbotron">
+
+    </div>
+    <% content_for(:navbar) do %>
+    <li><a href="/">Home</a></li>
+    <li><a href="something/else">Something else</a></li>
+    <li><a href="etc">Etc.</a></li>
+    <% end %>
+
+  <%= yield(:navbar)%>
+  <%= flash[:alert] %>
+  <%= flash[:notice] %>
+
     <%= yield %>
   </body>
 </html>
