@@ -8,10 +8,22 @@
 <hr>
 <%= link_to "New Product", new_product_path %>
 
-<%= form_tag products_path, :method => 'get' do %>
+<%= form_tag products_path, :method => @search do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :name => nil %>
   </p>
 
 <% end %>
+<h2>Most Reviewed</h2>
+<ul>
+  <% @most_reviews.each do |product| %>
+    <li><%= link_to product.name, product_path(product) %></li>
+  <% end %>
+</ul>
+<h2>Three most Recently Created</h2>
+<ul>
+  <% @three_most_recent.each do |product| %>
+    <li><%= link_to product.name, product_path(product) %></li>
+  <% end %>
+</ul>

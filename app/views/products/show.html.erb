@@ -34,3 +34,18 @@
                                    :method => "delete"} %></p>
 
 <p><%= link_to "Return to products", products_path %></p>
+
+<h1>USA</h1>
+<ul>
+  <% @products.us_products.each do |product| %>
+    <li><%= link_to product.name, product_path(product) %></li>
+  <% end %>
+</ul>
+<h2>Ranking</h2>
+<ul>
+  <% @product.reviews.list.each do |review| %>
+    <li>
+      <%= review.author %> <%= review.rating %>
+    </li>
+  <% end %>
+</ul>

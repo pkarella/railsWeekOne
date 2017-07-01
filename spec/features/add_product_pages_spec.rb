@@ -16,4 +16,5 @@ describe "the add a product process" do
     click_on 'Create Product'
     expect(page).to have_content 'errors'
   end
+
 end

@@ -1,12 +1,13 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.most_reviews
-    @products = Product.search(params[:search]) unless params[:search].blank?
-    @products = @products.name unless params[:name].blank?
-    render :index
+    @products = Product.all
+    @most_reviews = Product.most_reviews
+    @three_most_recent = Product.three_most_recent
   end
 
+
   def show
+    @products = Product.all
     @product = Product.find(params[:id])
     render :show
   end
@@ -48,7 +49,7 @@ class ProductsController < ApplicationController
 
 private
   def product_params
-    params.require(:product).permit(:name, :cost, :country, :search)
+    params.require(:product).permit(:name, :cost, :country)
   end
 
 end
